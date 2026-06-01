@@ -37,8 +37,8 @@
   /* Shadcn / Tailwind Colors */
   --color-border: rgba(26, 28, 32, 0.05);
   --color-input: rgba(26, 28, 32, 0.05);
-  --color-ring: var(--color-rock-blue-400);
-  --color-accent: var(--color-rock-blue-400);
+  --color-ring: var(--color-rock-blue-500);
+  --color-accent: var(--color-rock-blue-500);
 }
 
 :root {
@@ -50,16 +50,16 @@
   --popover-foreground: #1A1C20;
   --primary: #7192c0;
   --primary-foreground: #FFFFFF;
-  --secondary: #9bb7d4;
+  --secondary: #7192c0;
   --secondary-foreground: #1A1C20;
   --muted: rgba(26, 28, 32, 0.6);
   --muted-foreground: rgba(26, 28, 32, 0.6);
-  --accent: #9bb7d4;
+  --accent: #7192c0;
   --accent-foreground: #1A1C20;
   --destructive: #ef4444;
   --border: rgba(26, 28, 32, 0.05);
   --input: rgba(26, 28, 32, 0.05);
-  --ring: #9bb7d4;
+  --ring: #7192c0;
   --radius: 2px;
 }
 
