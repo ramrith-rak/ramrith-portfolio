@@ -6,11 +6,23 @@
   /* Ivory & Ink Palette (60-30-10) */
   --color-ivory: #FDFCFB;     /* 60% */
   --color-ink: #1A1C20;       /* 30% */
-  --color-serenity: #9BB7D4;  /* 10% */
+
+  /* Rock Blue Scale (10%) */
+  --color-rock-blue-50: #f4f7fa;
+  --color-rock-blue-100: #e5ecf4;
+  --color-rock-blue-200: #d1deec;
+  --color-rock-blue-300: #b2c9de;
+  --color-rock-blue-400: #9bb7d4;
+  --color-rock-blue-500: #7192c0;
+  --color-rock-blue-600: #5e7cb2;
+  --color-rock-blue-700: #536ba2;
+  --color-rock-blue-800: #485985;
+  --color-rock-blue-900: #3d4b6b;
+  --color-rock-blue-950: #293042;
 
   --color-background: var(--color-ivory);
   --color-foreground: var(--color-ink);
-  
+
   --font-sans: var(--font-jetbrains-mono);
   --font-mono: var(--font-jetbrains-mono);
   --font-serif: var(--font-crimson-pro);
@@ -25,8 +37,8 @@
   /* Shadcn / Tailwind Colors */
   --color-border: rgba(26, 28, 32, 0.05);
   --color-input: rgba(26, 28, 32, 0.05);
-  --color-ring: #9BB7D4;
-  --color-accent: #9BB7D4;
+  --color-ring: var(--color-rock-blue-400);
+  --color-accent: var(--color-rock-blue-400);
 }
 
 :root {
