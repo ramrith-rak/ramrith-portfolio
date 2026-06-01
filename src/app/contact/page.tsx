@@ -1,5 +1,11 @@
 import { CONTACT_LINKS } from "@/lib/data";
 import { ArrowUpRight } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Start a Conversation",
+  description: "Open for high-impact UX/UI design collaborations, creative engineering projects, and strategic consultation.",
+};
 
 export default function Contact() {
   return (
@@ -26,7 +32,7 @@ export default function Contact() {
               <a 
                 key={link.name} 
                 href={link.href}
-                className="group flex items-center justify-between p-8 border border-border rounded-sm bg-white transition-all duration-500 hover:shadow-xl hover:shadow-accent/5 hover:-translate-y-1"
+                className="group flex items-center justify-between p-8 border border-border rounded-sm bg-card transition-all duration-500 hover:shadow-xl hover:shadow-accent/5 hover:-translate-y-1"
               >
                 <div className="flex items-center gap-6">
                   <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent transition-all group-hover:bg-accent group-hover:text-background">
@@ -43,7 +49,7 @@ export default function Contact() {
           </div>
 
           {/* Editorial CTA */}
-          <div className="md:col-span-7 bg-foreground text-background p-12 md:p-24 rounded-sm flex flex-col justify-between min-h-[500px] shadow-2xl shadow-foreground/10">
+          <div className="md:col-span-7 bg-primary text-primary-foreground p-12 md:p-24 rounded-sm flex flex-col justify-between min-h-[500px] shadow-2xl shadow-primary/20">
             <div className="space-y-12">
                <div className="flex items-center gap-4">
                   <div className="w-2 h-2 bg-accent animate-pulse rounded-full" />
@@ -59,7 +65,7 @@ export default function Contact() {
             
             <a 
               href="mailto:ramrith.rak@gmail.com"
-              className="w-fit bg-accent text-foreground px-16 py-8 text-[10px] font-bold uppercase tracking-[0.4em] rounded-full hover:scale-105 transition-all shadow-xl shadow-accent/20"
+              className="w-fit bg-accent text-foreground px-16 py-8 text-[10px] font-bold uppercase tracking-[0.4em] rounded-md hover:scale-105 transition-all shadow-xl shadow-accent/20"
             >
               Send Message
             </a>
