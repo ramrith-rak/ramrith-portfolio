@@ -4,6 +4,7 @@ import { PROJECTS } from "@/lib/data";
 import { PROJECT_CONTENT } from "@/lib/projects";
 import { SectionRenderer } from "@/components/projects/section-renderer";
 import { ClickableImage } from "@/components/image-lightbox";
+import { asset } from "@/lib/utils";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 export async function generateStaticParams() {
@@ -82,7 +83,7 @@ export default async function ProjectPage({
         {"asset" in project && project.asset && (
           <div className="mb-32 md:mb-48 text-center">
             <a
-              href={project.asset}
+              href={asset(project.asset)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-foreground text-background px-10 py-5 rounded-md text-xs font-bold uppercase tracking-[0.3em] transition-all hover:bg-accent hover:text-foreground hover:-translate-y-0.5 hover:shadow-xl hover:shadow-accent/20"

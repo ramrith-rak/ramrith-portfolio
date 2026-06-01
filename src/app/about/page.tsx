@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ClickableImage } from "@/components/image-lightbox";
+import { asset } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "About",
@@ -35,7 +36,7 @@ export default function About() {
             </p>
             <div className="flex items-center gap-6 mt-10">
               <a
-                href="/resume.pdf"
+                href={asset("/resume.pdf")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 rounded-md text-xs font-bold uppercase tracking-[0.2em] transition-all hover:bg-accent hover:text-foreground hover:-translate-y-0.5"

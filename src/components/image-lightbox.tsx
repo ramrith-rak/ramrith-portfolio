@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react";
 import { X } from "lucide-react";
+import { asset } from "@/lib/utils";
 
 export function ClickableImage({
   src,
@@ -15,6 +16,7 @@ export function ClickableImage({
   loading?: "eager" | "lazy";
 }) {
   const [open, setOpen] = useState(false);
+  const href = asset(src);
 
   const close = useCallback(() => setOpen(false), []);
 
@@ -30,7 +32,7 @@ export function ClickableImage({
   return (
     <>
       <img
-        src={src}
+        src={href}
         alt={alt}
         className={className}
         loading={loading}
@@ -53,7 +55,7 @@ export function ClickableImage({
             <X size={28} strokeWidth={1.5} />
           </button>
           <img
-            src={src}
+            src={href}
             alt={alt}
             className="max-w-full max-h-full object-contain rounded-sm"
             onClick={(e) => e.stopPropagation()}

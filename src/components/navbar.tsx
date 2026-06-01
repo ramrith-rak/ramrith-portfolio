@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
+import { cn, asset } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { NAV_ITEMS } from "@/lib/data";
 
@@ -71,7 +71,7 @@ export function Navbar() {
             </Link>
           ))}
           <a
-            href="/resume.pdf"
+            href={asset("/resume.pdf")}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setIsOpen(false)}
@@ -108,7 +108,7 @@ export function Navbar() {
             </Link>
           ))}
           <a
-            href="/resume.pdf"
+            href={asset("/resume.pdf")}
             target="_blank"
             rel="noopener noreferrer"
             className="text-[10px] font-bold uppercase tracking-[0.2em] transition-all hover:text-accent text-muted"
