@@ -46,12 +46,11 @@ export function Navbar() {
       <div 
         id="mobile-menu"
         className={cn(
-          "fixed inset-0 z-[90] md:hidden bg-[#FDFCFB]",
-          isOpen ? "translate-x-0 visible" : "translate-x-full invisible"
+          "fixed inset-0 z-[90] md:hidden bg-[#FDFCFB] transition-all duration-500 ease-in-out",
+          isOpen 
+            ? "translate-x-0 opacity-100 pointer-events-auto" 
+            : "translate-x-full opacity-0 pointer-events-none"
         )}
-        style={{
-          transition: "translate 500ms ease-in-out, transform 500ms ease-in-out, visibility 500ms ease-in-out"
-        }}
         aria-hidden={!isOpen}
         inert={!isOpen}
       >
