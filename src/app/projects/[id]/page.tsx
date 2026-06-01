@@ -120,7 +120,7 @@ export default async function ProjectPage({
           </div>
           <a
             href="mailto:ramrith.rak@gmail.com"
-            className="group inline-flex items-center gap-3 bg-primary text-primary-foreground px-10 py-5 rounded-md text-xs font-bold uppercase tracking-[0.3em] transition-all hover:bg-accent hover:text-foreground hover:-translate-y-0.5 hover:shadow-xl hover:shadow-accent/20"
+            className="group inline-flex items-center gap-3 bg-foreground text-background px-10 py-5 rounded-md text-xs font-bold uppercase tracking-[0.3em] transition-all hover:bg-accent hover:text-foreground hover:-translate-y-0.5 hover:shadow-xl hover:shadow-accent/20"
           >
             Start a Conversation
             <ArrowUpRight

@@ -11,7 +11,7 @@ export function Footer() {
           </h2>
           <a 
             href="mailto:ramrith.rak@gmail.com"
-            className="inline-block bg-primary text-primary-foreground px-12 py-6 rounded-md text-xs font-bold uppercase tracking-[0.3em] transition-all hover:bg-accent hover:text-foreground hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/20"
+            className="inline-block bg-foreground text-background px-12 py-6 rounded-md text-xs font-bold uppercase tracking-[0.3em] transition-all hover:bg-accent hover:text-foreground hover:-translate-y-1 hover:shadow-xl hover:shadow-accent/20"
           >
             Get in Touch
           </a>
