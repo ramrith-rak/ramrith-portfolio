@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PROJECTS } from "@/lib/data";
+import { PROJECT_CONTENT } from "@/lib/projects";
+import { SectionRenderer } from "@/components/projects/section-renderer";
+import { ClickableImage } from "@/components/image-lightbox";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 export async function generateStaticParams() {
@@ -28,7 +31,8 @@ export default async function ProjectPage({
 }) {
   const { id } = await params;
   const project = PROJECTS.find((p) => p.id === id);
-  if (!project) notFound();
+  const content = PROJECT_CONTENT[id];
+  if (!project || !content) notFound();
 
   return (
     <div className="container mx-auto px-6 md:px-12 py-32 md:py-48 animate-in fade-in duration-1000">
@@ -65,48 +69,67 @@ export default async function ProjectPage({
           </p>
         </header>
 
-        {/* Project Visual Placeholder */}
-        <div className="aspect-[16/9] bg-card rounded-sm border border-border overflow-hidden relative shadow-sm mb-32 md:mb-48">
-          <div className="absolute inset-0 bg-accent/10 flex items-center justify-center">
-            <span className="font-serif text-[12rem] md:text-[20rem] italic font-extralight text-background select-none">
-              {project.id}
-            </span>
-          </div>
+        {/* Project Visual */}
+        <div className="aspect-[16/9] rounded-sm border border-border overflow-hidden relative shadow-sm mb-32 md:mb-48">
+          <ClickableImage
+            src={project.image}
+            alt={project.title}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
         </div>
 
-        {/* Project Details Section */}
-        <section className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24 mb-32">
-          <div className="md:col-span-4">
-            <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-6">
-              Overview
-            </h3>
+        {/* PDF Download (for projects with an asset like Catopia) */}
+        {"asset" in project && project.asset && (
+          <div className="mb-32 md:mb-48 text-center">
+            <a
+              href={project.asset}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-foreground text-background px-10 py-5 rounded-md text-xs font-bold uppercase tracking-[0.3em] transition-all hover:bg-accent hover:text-foreground hover:-translate-y-0.5 hover:shadow-xl hover:shadow-accent/20"
+            >
+              Download Full Thesis (PDF)
+              <ArrowUpRight size={16} strokeWidth={1.5} />
+            </a>
           </div>
-          <div className="md:col-span-8 space-y-8">
-            <p className="text-base md:text-lg leading-relaxed text-foreground/80">
-              {project.description}
-            </p>
-            <div className="flex flex-wrap gap-8 pt-4">
-              <div>
-                <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-2">
-                  Category
-                </div>
-                <div className="text-sm font-mono">{project.tag}</div>
-              </div>
-              <div>
-                <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-2">
-                  Type
-                </div>
-                <div className="text-sm font-mono">{project.type}</div>
-              </div>
-              <div>
-                <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-2">
-                  Project ID
-                </div>
-                <div className="text-sm font-mono">{project.id}</div>
-              </div>
+        )}
+
+        {/* Context Bar */}
+        {(content.role || content.timeline || content.tools) && (
+          <section className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 mb-32 md:mb-48">
+            <div className="md:col-span-4">
+              <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-6">
+                Context
+              </h3>
             </div>
-          </div>
-        </section>
+            <div className="md:col-span-8 flex flex-wrap gap-12">
+              {content.role && (
+                <div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-2">Role</div>
+                  <div className="text-sm font-mono text-foreground/80">{content.role}</div>
+                </div>
+              )}
+              {content.timeline && (
+                <div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-2">Timeline</div>
+                  <div className="text-sm font-mono text-foreground/80">{content.timeline}</div>
+                </div>
+              )}
+              {content.tools && content.tools.length > 0 && (
+                <div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-2">Tools</div>
+                  <div className="text-sm font-mono text-foreground/80">{content.tools.join(" · ")}</div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* Rich Case Study Content */}
+        <div className="space-y-32 md:space-y-48">
+          {content.sections.map((section, i) => (
+            <SectionRenderer key={i} section={section} />
+          ))}
+        </div>
 
         {/* Editorial CTA */}
         <div className="border-t border-border pt-24 flex flex-col md:flex-row justify-between items-start md:items-center gap-12">

@@ -32,6 +32,7 @@ export function Footer() {
           <div className="flex items-center gap-8">
             <a href="https://linkedin.com/in/ramrith-rak" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">LinkedIn</a>
             <a href="https://github.com/ramrith-rak" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">GitHub</a>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">Resume</a>
             <span>© 2026 — INTENTION</span>
           </div>
         </div>

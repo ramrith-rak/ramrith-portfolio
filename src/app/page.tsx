@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { PROJECTS } from "@/lib/data";
+import { ClickableImage } from "@/components/image-lightbox";
 
 export default function Home() {
   return (
@@ -31,12 +32,15 @@ export default function Home() {
             >
               {/* Image Container */}
               <div className={cn(
-                "md:col-span-8 aspect-[16/10] bg-card rounded-sm border border-border overflow-hidden relative shadow-sm transition-all duration-700 group-hover:shadow-xl group-hover:shadow-accent/5",
+                "md:col-span-8 aspect-[16/10] rounded-sm border border-border overflow-hidden relative shadow-sm transition-all duration-700 group-hover:shadow-xl group-hover:shadow-accent/5",
                 index % 2 !== 0 && "md:order-2"
               )}>
-                 <div className="absolute inset-0 bg-accent/20 opacity-40 flex items-center justify-center font-serif text-9xl italic font-extralight text-background transition-all duration-700 group-hover:scale-105 group-hover:opacity-60">
-                    {project.id}
-                 </div>
+                 <ClickableImage
+                   src={project.image}
+                   alt={project.title}
+                   className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                   loading={index === 0 ? "eager" : "lazy"}
+                 />
               </div>
 
               {/* Info Container */}

@@ -70,6 +70,15 @@ export function Navbar() {
               {item.name}
             </Link>
           ))}
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
+            className="text-5xl font-serif font-light transition-all hover:text-accent text-muted"
+          >
+            Resume
+          </a>
         </nav>
       </div>
 
@@ -98,6 +107,14 @@ export function Navbar() {
               {item.name}
             </Link>
           ))}
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[10px] font-bold uppercase tracking-[0.2em] transition-all hover:text-accent text-muted"
+          >
+            Resume
+          </a>
         </nav>
 
         {/* Mobile Menu Button */}
