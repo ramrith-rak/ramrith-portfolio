@@ -2,115 +2,53 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme inline {
-  /* Primitive Colors (Raw Palette) */
-  --color-neutral-0: #FFFFFF;
-  --color-neutral-50: #F8FAFC;
-  --color-neutral-100: #F1F5F9;
-  --color-neutral-200: #E2E8F0;
-  --color-neutral-300: #CBD5E1;
-  --color-neutral-400: #94A3B8;
-  --color-neutral-500: #64748B;
-  --color-neutral-600: #475569;
-  --color-neutral-700: #334155;
-  --color-neutral-800: #1E293B;
-  --color-neutral-900: #0F172A;
-  --color-neutral-950: #080808; /* Obsidian */
-  --color-neutral-1000: #030303; /* Void */
+  /* Ivory & Ink Palette (60-30-10) */
+  --color-ivory: #FDFCFB;     /* 60% */
+  --color-ink: #1A1C20;       /* 30% */
+  --color-serenity: #9BB7D4;  /* 10% */
 
-  --color-indigo-50: #EEF2FF;
-  --color-indigo-100: #E0E7FF;
-  --color-indigo-200: #C7D2FE;
-  --color-indigo-300: #A5B4FC;
-  --color-indigo-400: #818CF8;
-  --color-indigo-500: #6366F1; /* Tactical Indigo */
-  --color-indigo-600: #4F46E5;
-  --color-indigo-700: #4338CA;
-  --color-indigo-800: #3730A3;
-  --color-indigo-900: #312E81;
-  --color-indigo-950: #1E1B4B;
-
-  /* Semantic Mappings */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--ivory);
+  --color-foreground: var(--ink);
+  
   --font-sans: var(--font-jetbrains-mono);
   --font-mono: var(--font-jetbrains-mono);
-  
-  /* Tactical Precision System Colors */
-  --color-tactical: var(--color-indigo-500);
-  --color-tactical-dim: rgba(99, 102, 241, 0.2);
-  --color-obsidian: var(--color-neutral-950);
-  --color-void: var(--color-neutral-1000);
+  --font-serif: var(--font-crimson-pro);
 
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  
-  /* Enforce Sharp Radius */
-  --radius-none: 0px;
+  --radius-lg: 4px;
+  --radius-md: 2px;
   --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
-  --radius-2xl: 0px;
-  --radius-3xl: 0px;
-  --radius-4xl: 0px;
-  --radius-xl-custom: 0px;
+
+  /* Transitions */
+  --transition-editorial: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Shadcn / Tailwind Colors */
+  --color-border: rgba(26, 28, 32, 0.05);
+  --color-input: rgba(26, 28, 32, 0.05);
+  --color-ring: #9BB7D4;
+  --color-accent: #9BB7D4;
 }
 
 :root {
-  --background: var(--color-neutral-1000);
-  --foreground: var(--color-neutral-50);
-  --card: var(--color-neutral-950);
-  --card-foreground: var(--color-neutral-50);
-  --popover: var(--color-neutral-950);
-  --popover-foreground: var(--color-neutral-50);
-  --primary: var(--color-neutral-50);
-  --primary-foreground: var(--color-neutral-1000);
-  --secondary: #0a0a0c; /* Near-void background accent */
-  --secondary-foreground: var(--color-neutral-50);
-  --muted: var(--color-neutral-500);
-  --muted-foreground: var(--color-neutral-500);
-  --accent: var(--color-indigo-500);
-  --accent-foreground: var(--color-neutral-50);
+  --background: #FDFCFB;
+  --foreground: #1A1C20;
+  --card: #FFFFFF;
+  --card-foreground: #1A1C20;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1C20;
+  --primary: #1A1C20;
+  --primary-foreground: #FDFCFB;
+  --secondary: #9BB7D4;
+  --secondary-foreground: #1A1C20;
+  --muted: rgba(26, 28, 32, 0.6);
+  --muted-foreground: rgba(26, 28, 32, 0.6);
+  --accent: #9BB7D4;
+  --accent-foreground: #1A1C20;
   --destructive: #ef4444;
-  --border: rgba(248, 250, 252, 0.1);
-  --input: rgba(248, 250, 252, 0.1);
-  --ring: var(--color-indigo-500);
-  --radius: 0px;
-  
-  /* Sidebar */
-  --sidebar: var(--color-neutral-950);
-  --sidebar-foreground: var(--color-neutral-50);
-  --sidebar-primary: var(--color-indigo-500);
-  --sidebar-primary-foreground: var(--color-neutral-50);
-  --sidebar-accent: rgba(99, 102, 241, 0.1);
-  --sidebar-accent-foreground: var(--color-indigo-500);
-  --sidebar-border: rgba(248, 250, 252, 0.05);
-  --sidebar-ring: var(--color-indigo-500);
+  --border: rgba(26, 28, 32, 0.05);
+  --input: rgba(26, 28, 32, 0.05);
+  --ring: #9BB7D4;
+  --radius: 2px;
 }
 
 @layer base {
@@ -119,70 +57,30 @@
   }
   body {
     @apply bg-background text-foreground font-mono antialiased;
-    background-image: 
-        linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    touch-action: manipulation;
+    -webkit-font-smoothing: antialiased;
   }
   
-  /* Noise Texture Overlay */
-  body::before {
-    content: "";
-    @apply fixed inset-0 pointer-events-none opacity-2 z-50;
+  /* Soulful Texture: Grain Overlay */
+  .grain {
+    @apply fixed inset-0 pointer-events-none z-50 opacity-5;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    @apply font-serif;
+    font-weight: 300;
   }
 
   button:focus, a:focus {
     outline: none;
   }
   button:focus-visible, a:focus-visible {
-    @apply outline-2 outline-tactical outline-offset-4;
+    @apply outline-2 outline-accent outline-offset-4;
   }
 }
 
 @layer components {
-  .tactical-border {
-    @apply border border-white/10 relative;
+  .editorial-underline {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-10 after:bg-foreground after:transition-all after:duration-500 hover:after:w-20 hover:after:bg-accent;
   }
-  
-  .corner-tl::before {
-    content: '';
-    @apply absolute -top-[1px] -left-[1px] w-2 h-2 border-t-2 border-l-2 border-tactical pointer-events-none;
-  }
-  .corner-tr::after {
-    content: '';
-    @apply absolute -top-[1px] -right-[1px] w-2 h-2 border-t-2 border-r-2 border-tactical pointer-events-none;
-  }
-  .corner-bl::before {
-    content: '';
-    @apply absolute -bottom-[1px] -left-[1px] w-2 h-2 border-b-2 border-l-2 border-tactical pointer-events-none;
-  }
-  .corner-br::after {
-    content: '';
-    @apply absolute -bottom-[1px] -right-[1px] w-2 h-2 border-b-2 border-r-2 border-tactical pointer-events-none;
-  }
-
-  .scanline {
-    @apply absolute w-full h-[100px] z-10 opacity-10 pointer-events-none;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(99, 102, 241, 0.02) 50%, rgba(0, 0, 0, 0) 100%);
-    bottom: 100%;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .scanline {
-      animation: scanline 8s linear infinite;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .scanline {
-      @apply hidden;
-    }
-  }
-}
-
-@keyframes scanline {
-  0% { bottom: 100%; }
-  100% { bottom: -100px; }
 }

@@ -1,74 +1,66 @@
-import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { TacticalCard } from "@/components/tactical/tactical-card";
-import { SectionHeader } from "@/components/tactical/section-header";
 import { PROJECTS } from "@/lib/data";
 
 export default function Projects() {
   return (
-    <div className="container mx-auto px-6 py-12 md:py-24">
-      <div className="max-w-6xl mx-auto space-y-16">
+    <div className="container mx-auto px-6 md:px-12 py-32 md:py-48 animate-in fade-in duration-1000">
+      <div className="max-w-7xl mx-auto space-y-48 md:space-y-72">
         
-        <SectionHeader 
-          tag="Case Studies"
-          title="Selected Work"
-          description="Exploration of digital frontiers through rigorous design engineering and precision logic."
-        />
+        <header className="max-w-4xl space-y-12">
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent">
+                Archive & Selection
+            </span>
+            <h1 className="font-serif text-7xl md:text-9xl font-light leading-[0.85] tracking-tighter">
+                Selected<br />
+                <i className="font-light italic">Case Studies.</i>
+            </h1>
+            <p className="text-lg md:text-xl font-mono text-muted max-w-xl leading-relaxed">
+                A rigorous exploration of digital frontiers, focusing on high-utility design engineering and human-centric logic.
+            </p>
+        </header>
 
-        <div className="grid grid-cols-1 gap-12">
-          {PROJECTS.map((project) => (
-            <TacticalCard 
-              key={project.id} 
-              className="group grid grid-cols-1 md:grid-cols-5 gap-0 md:gap-12 p-6 md:p-12"
+        <section className="space-y-64 md:space-y-96">
+          {PROJECTS.map((project, index) => (
+            <Link 
+              key={project.id}
+              href={`/projects/${project.id}`}
+              className={cn(
+                "group grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-start",
+                index % 2 !== 0 && "md:flex-row-reverse"
+              )}
             >
-              {/* Visual Placeholder (left) */}
-              <div className="md:col-span-3 h-[240px] md:h-[400px] bg-void relative overflow-hidden order-2 md:order-1 mt-8 md:mt-0" aria-hidden="true">
-                 <div className="absolute inset-0 opacity-40 group-hover:scale-105 transition-transform duration-1000">
-                    {/* Abstract Grid / UI Stub */}
-                    <div className="p-6 md:p-12 h-full flex flex-col gap-6">
-                        <div className="flex gap-4">
-                            <div className="w-16 h-4 bg-tactical/20" />
-                            <div className="w-32 h-4 bg-white/5" />
-                        </div>
-                        <div className="grid grid-cols-3 gap-6 h-full">
-                            <div className="col-span-2 bg-white/5 border border-white/5" />
-                            <div className="bg-white/5 border border-white/5" />
-                        </div>
-                    </div>
-                 </div>
-                 <div className="absolute inset-0 bg-gradient-to-r from-void via-transparent to-transparent hidden md:block" />
-                 <div className="absolute bottom-4 left-4 md:bottom-8 md:left-8 text-tactical/30 font-bold text-6xl md:text-8xl tracking-tighter select-none">
-                   {project.id}
+              <div className={cn(
+                "md:col-span-7 aspect-[16/10] bg-white rounded-sm border border-border overflow-hidden relative shadow-sm transition-all duration-700 group-hover:shadow-xl group-hover:shadow-accent/5",
+                index % 2 !== 0 && "md:order-2"
+              )}>
+                 <div className="absolute inset-0 bg-accent/10 flex items-center justify-center font-serif text-9xl italic font-extralight text-background transition-all duration-700 group-hover:scale-105">
+                    {project.id}
                  </div>
               </div>
 
-              {/* Info (right) */}
-              <div className="md:col-span-2 flex flex-col justify-center order-1 md:order-2">
-                <div className="flex items-center gap-4 mb-4 md:mb-6">
-                  <span className="text-tactical text-[10px] font-bold uppercase tracking-[0.3em]">{project.tag}</span>
-                  <div className="h-[1px] w-8 bg-white/10" aria-hidden="true" />
-                  <span className="text-muted text-[10px] font-bold uppercase tracking-widest">{project.type}</span>
+              <div className={cn(
+                "md:col-span-5 flex flex-col gap-8 pt-4",
+                index % 2 !== 0 && "md:order-1 md:text-right md:items-end"
+              )}>
+                <div className="flex items-center gap-4">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent">{project.tag}</span>
+                    <span className="w-1.5 h-1.5 bg-accent/20 rounded-full" />
+                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted">{project.type}</span>
                 </div>
-                <h3 className="text-3xl md:text-5xl font-bold text-primary tracking-tighter mb-4 md:mb-6 group-hover:text-tactical transition-colors uppercase leading-tight">
-                  {project.title}
-                </h3>
-                <p className="text-muted text-xs md:text-sm leading-relaxed uppercase tracking-widest mb-8 md:mb-10">
-                  {project.description}
+                <h2 className="font-serif text-5xl md:text-7xl font-light leading-[0.95] tracking-tighter">
+                    {project.title}
+                </h2>
+                <p className="text-sm md:text-base text-muted leading-relaxed max-w-sm">
+                    {project.description}
                 </p>
-                <Link 
-                  href={`/projects/${project.id}`}
-                  className={cn(
-                    buttonVariants({ variant: "outline" }),
-                    "w-full md:w-fit rounded-none border-white/10 px-8 py-5 md:py-6 text-[10px] font-bold uppercase tracking-widest hover:bg-primary hover:text-primary-foreground h-auto text-center justify-center"
-                  )}
-                >
-                  View Case Study
-                </Link>
+                <div className="editorial-underline text-[10px] font-bold uppercase tracking-[0.2em] w-fit">
+                    Explore Case Study
+                </div>
               </div>
-            </TacticalCard>
+            </Link>
           ))}
-        </div>
+        </section>
 
       </div>
     </div>

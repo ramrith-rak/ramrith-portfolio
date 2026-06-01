@@ -1,80 +1,70 @@
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { ArrowUpRight } from "lucide-react";
-import { TacticalCard } from "@/components/tactical/tactical-card";
-import { SectionHeader } from "@/components/tactical/section-header";
 import { CONTACT_LINKS } from "@/lib/data";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Contact() {
   return (
-    <div className="container mx-auto px-6 py-12 md:py-24">
-      <div className="max-w-6xl mx-auto space-y-16">
+    <div className="container mx-auto px-6 md:px-12 py-32 md:py-48 animate-in fade-in duration-1000">
+      <div className="max-w-7xl mx-auto space-y-48">
         
-        <SectionHeader 
-          tag="Get in Touch"
-          title="Contact"
-          description="Available for high-impact UX/UI design collaborations and creative projects."
-        />
+        <header className="max-w-4xl space-y-12">
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-accent">
+                Availability & Connect
+            </span>
+            <h1 className="font-serif text-7xl md:text-9xl font-light leading-[0.85] tracking-tighter">
+                Let&apos;s start<br />
+                <i className="font-light italic">a conversation.</i>
+            </h1>
+            <p className="text-lg md:text-xl font-mono text-muted max-w-xl leading-relaxed">
+                Open for high-impact UX/UI design collaborations, creative engineering projects, and strategic consultation.
+            </p>
+        </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Left: Contact Info Grid */}
-          <div className="grid grid-cols-1 gap-4">
+        <section className="grid grid-cols-1 md:grid-cols-12 gap-24 items-start">
+          {/* Contact Links */}
+          <div className="md:col-span-5 space-y-4">
             {CONTACT_LINKS.map((link) => (
               <a 
                 key={link.name} 
                 href={link.href}
-                className="group"
+                className="group flex items-center justify-between p-8 border border-border rounded-sm bg-white transition-all duration-500 hover:shadow-xl hover:shadow-accent/5 hover:-translate-y-1"
               >
-                <TacticalCard 
-                  variant="void"
-                  className="p-6 md:p-8 flex-row items-center justify-between hover:bg-tactical-dim transition-transform"
-                >
-                  <div className="flex items-center gap-4 md:gap-6">
-                    <div className="w-10 h-10 border border-white/10 flex items-center justify-center text-tactical group-hover:scale-110 transition-transform flex-shrink-0" aria-hidden="true">
-                      <link.icon size={18} strokeWidth={1.5} />
-                    </div>
-                    <div className="flex flex-col min-w-0">
-                      <span className="text-[10px] text-muted font-bold tracking-widest uppercase mb-1">{link.name}</span>
-                      <span className="text-sm md:text-lg font-bold text-primary tracking-tight truncate">{link.value}</span>
-                    </div>
+                <div className="flex items-center gap-6">
+                  <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent transition-all group-hover:bg-accent group-hover:text-background">
+                    <link.icon size={20} strokeWidth={1.5} />
                   </div>
-                  <div className="w-8 h-8 border border-white/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" aria-hidden="true">
-                    <ArrowUpRight size={14} className="text-tactical" />
+                  <div>
+                    <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent opacity-60 mb-1">{link.name}</div>
+                    <div className="text-xl tracking-tight text-foreground font-light">{link.value}</div>
                   </div>
-                </TacticalCard>
+                </div>
+                <ArrowUpRight className="w-5 h-5 text-accent opacity-0 group-hover:opacity-100 transition-all" />
               </a>
             ))}
           </div>
 
-          {/* Right: Message Prompt Area */}
-          <TacticalCard 
-            corners={["tr", "br"]} 
-            className="p-8 md:p-12 bg-obsidian flex flex-col justify-between min-h-[360px] md:min-h-[400px]"
-          >
-            <div className="space-y-8">
+          {/* Editorial CTA */}
+          <div className="md:col-span-7 bg-foreground text-background p-12 md:p-24 rounded-sm flex flex-col justify-between min-h-[500px] shadow-2xl shadow-foreground/10">
+            <div className="space-y-12">
                <div className="flex items-center gap-4">
-                  <div className="w-2 h-2 bg-tactical animate-pulse rounded-full" aria-hidden="true" />
-                  <span className="text-[10px] text-tactical font-bold tracking-[0.2em] uppercase">Ready to connect</span>
+                  <div className="w-2 h-2 bg-accent animate-pulse rounded-full" />
+                  <span className="text-[10px] font-bold tracking-[0.3em] uppercase opacity-70">Ready to build</span>
                </div>
-               <h2 className="text-3xl md:text-4xl font-bold text-primary tracking-tighter leading-tight uppercase">
-                 Let&apos;s build<br />something great
+               <h2 className="font-serif text-6xl md:text-8xl font-light leading-[0.95] tracking-tighter">
+                 Drop a line,<br />start a <i className="font-light">spark.</i>
                </h2>
-               <p className="text-muted text-xs md:text-sm uppercase tracking-widest leading-loose max-w-md">
+               <p className="text-base md:text-lg opacity-60 leading-relaxed max-w-sm">
                  Currently accepting new project inquiries. Response time typically within 24-48 hours.
                </p>
             </div>
             
             <a 
               href="mailto:ramrith.rak@gmail.com"
-              className={cn(
-                buttonVariants({ variant: "default" }),
-                "w-full md:w-fit bg-primary text-primary-foreground px-12 py-5 md:py-8 text-xs font-bold uppercase tracking-[0.2em] rounded-none hover:bg-neutral-50 transition-colors transition-transform h-auto mt-12 md:mt-0 flex items-center justify-center"
-              )}
+              className="w-fit bg-accent text-foreground px-16 py-8 text-[10px] font-bold uppercase tracking-[0.4em] rounded-full hover:scale-105 transition-all shadow-xl shadow-accent/20"
             >
               Send Message
             </a>
-          </TacticalCard>
-        </div>
+          </div>
+        </section>
 
       </div>
     </div>

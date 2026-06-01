@@ -13,34 +13,28 @@ export function Navbar() {
 
   return (
     <header className={cn(
-      "sticky top-0 z-[100] w-full border-b duration-500 transition-[background-color,border-color]",
-      isOpen ? "bg-void border-transparent transition-none" : "bg-void/80 backdrop-blur-xl border-white/5"
+      "fixed top-0 z-[100] w-full transition-all duration-500",
+      isOpen ? "bg-background" : "bg-background/80 backdrop-blur-xl"
     )}>
-      <div className="container mx-auto flex h-20 items-center justify-between px-6 relative z-[101]">
+      <div className="container mx-auto flex h-24 items-center justify-between px-6 md:px-12 relative z-[101]">
         <Link 
           href="/" 
-          className="group flex items-center gap-3 font-bold tracking-tighter text-tactical"
+          className="font-serif text-3xl font-light tracking-tight text-foreground transition-opacity hover:opacity-70"
           onClick={() => setIsOpen(false)}
           aria-label="Ramrith Rakpoun Home"
         >
-          <div 
-            className="flex h-8 w-8 items-center justify-center border border-tactical/30 bg-tactical/5 transition-colors group-hover:bg-tactical group-hover:text-primary-foreground"
-            aria-hidden="true"
-          >
-            <span className="text-xs">R</span>
-          </div>
-          <span className="text-sm tracking-[0.2em] text-primary">RAKPOUN</span>
+          Ramrith R.
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-10" aria-label="Main Navigation">
+        <nav className="hidden md:flex items-center gap-16" aria-label="Main Navigation">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.path}
               href={item.path}
               className={cn(
-                "text-[10px] font-bold uppercase tracking-[0.3em] transition-colors hover:text-tactical",
-                pathname === item.path ? "text-tactical" : "text-muted"
+                "text-[10px] font-bold uppercase tracking-[0.2em] transition-all hover:text-accent",
+                pathname === item.path ? "text-foreground underline underline-offset-8 decoration-accent/50" : "text-muted"
               )}
               aria-current={pathname === item.path ? "page" : undefined}
             >
@@ -51,7 +45,7 @@ export function Navbar() {
 
         {/* Mobile Menu Button */}
         <button 
-          className="flex md:hidden items-center justify-center p-2 text-primary hover:text-tactical transition-colors"
+          className="flex md:hidden items-center justify-center p-2 text-foreground transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}
@@ -65,30 +59,26 @@ export function Navbar() {
       <div 
         id="mobile-menu"
         className={cn(
-          "fixed inset-0 top-0 z-[90] md:hidden bg-void transition-[transform,opacity,visibility] duration-500 ease-in-out",
+          "fixed inset-0 top-0 z-[90] md:hidden bg-background transition-all duration-700 ease-in-out",
           isOpen ? "translate-x-0 opacity-100 visible" : "translate-x-full opacity-0 invisible"
         )}
         aria-hidden={!isOpen}
       >
-        <nav className="relative flex flex-col items-center justify-start h-full gap-8 p-6 pt-32" aria-label="Mobile Navigation">
+        <nav className="relative flex flex-col items-center justify-center h-full gap-12 p-6" aria-label="Mobile Navigation">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.path}
               href={item.path}
               onClick={() => setIsOpen(false)}
               className={cn(
-                "text-lg font-bold uppercase tracking-[0.3em] transition-colors hover:text-tactical",
-                pathname === item.path ? "text-tactical border-b border-tactical" : "text-muted"
+                "text-5xl font-serif font-light transition-all hover:text-accent",
+                pathname === item.path ? "text-foreground italic" : "text-muted"
               )}
               aria-current={pathname === item.path ? "page" : undefined}
             >
               {item.name}
             </Link>
           ))}
-          <div className="absolute bottom-12 left-0 w-full px-6 flex flex-col items-center gap-4">
-             <div className="w-full h-[1px] bg-white/5" />
-             <span className="text-[10px] text-muted tracking-widest uppercase">Precision UX/UI Design</span>
-          </div>
         </nav>
       </div>
     </header>

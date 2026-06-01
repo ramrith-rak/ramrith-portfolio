@@ -1,97 +1,66 @@
-import { ArrowRight } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { TacticalCard } from "@/components/tactical/tactical-card";
-import { EXPERIENCE_METRIC, PROJECTS } from "@/lib/data";
+import { PROJECTS } from "@/lib/data";
 
 export default function Home() {
-  const featuredProject = PROJECTS.find(p => p.featured) || PROJECTS[0];
-
   return (
-    <div className="container mx-auto px-6 py-12 md:py-24">
-      <div className="max-w-6xl mx-auto space-y-12">
+    <div className="container mx-auto px-6 md:px-12 py-32 md:py-48 animate-in fade-in duration-1000">
+      <div className="max-w-7xl mx-auto">
         
-        {/* Tactical Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-min md:auto-rows-[240px]">
-          
-          {/* Hero Section */}
-          <TacticalCard 
-            corners={["tl", "tr"]} 
-            showScanline 
-            className="md:col-span-3 md:row-span-2 p-8 md:p-12 justify-end bg-obsidian/40"
-          >
-            <div className="absolute top-6 left-6 md:top-8 md:left-8 text-[10px] text-tactical font-bold flex items-center gap-2 uppercase tracking-widest">
-              <span className="w-2 h-2 bg-tactical animate-pulse rounded-full" aria-hidden="true" />
-              UX/UI Design Portfolio
-            </div>
-            
-            <div className="relative z-20 mt-16 md:mt-0">
-              <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold text-primary mb-6 tracking-tighter leading-[0.9]">
-                RAMRITH<br />RAKPOUN
-              </h1>
-              <div className="flex flex-col md:flex-row md:items-center gap-8">
-                <p className="text-muted text-base md:text-lg max-w-sm leading-relaxed uppercase tracking-tight">
-                  UX/UI Designer & Engineering Generalist. Bridging business logic and high-fidelity interfaces through AI-assisted development.
-                </p>
-                <div className="hidden md:block h-[1px] flex-grow bg-white/10" aria-hidden="true" />
-                <Link 
-                  href="/projects"
-                  className={cn(
-                    buttonVariants({ variant: "default" }),
-                    "bg-tactical hover:bg-tactical/90 text-primary px-6 py-5 md:px-10 md:py-8 text-xs font-bold uppercase tracking-[0.2em] rounded-none transition-colors transition-transform hover:scale-105 active:scale-95 h-auto w-full md:w-auto text-center justify-center"
-                  )}
-                >
-                  View My Work <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                </Link>
-              </div>
-            </div>
-          </TacticalCard>
-
-          {/* Metric Bento */}
-          <TacticalCard corners={["tr"]} className="md:col-span-1 md:row-span-1 justify-between">
-            <span className="text-[10px] text-muted font-bold tracking-widest uppercase">{EXPERIENCE_METRIC.label}</span>
-            <div className="text-5xl font-bold text-tactical tracking-tighter">{EXPERIENCE_METRIC.value}</div>
-            <p className="text-[9px] text-muted leading-relaxed uppercase tracking-tighter">
-              {EXPERIENCE_METRIC.description}
+        {/* Editorial Hero */}
+        <header className="mb-48 md:mb-72">
+            <h1 className="font-serif text-7xl sm:text-8xl md:text-[10rem] font-light leading-[0.85] tracking-tighter mb-12">
+                Ramrith Rakpoun<br />
+                <i className="font-light italic">Design Engineer.</i>
+            </h1>
+            <p className="text-lg md:text-xl font-mono text-muted max-w-lg leading-relaxed ml-2">
+                Crafting intentional digital experiences at the intersection of high-utility logic and soulful minimalism.
             </p>
-          </TacticalCard>
+        </header>
 
-          {/* About Shortcut */}
-          <TacticalCard 
-            corners={["br"]} 
-            variant="void"
-            className="md:col-span-1 md:row-span-1 justify-between group cursor-pointer"
-          >
-            <span className="text-[10px] text-muted font-bold tracking-widest uppercase">Contact</span>
-            <div className="space-y-1" aria-hidden="true">
-              <div className="h-1 w-full bg-white/5" />
-              <div className="h-1 w-2/3 bg-white/5" />
-              <div className="h-1 w-full bg-tactical/20" />
-            </div>
-            <Link href="/contact" className="text-[10px] font-bold tracking-widest uppercase text-primary flex items-center justify-between">
-              GET IN TOUCH <span aria-hidden="true">→</span>
+        {/* Vertical Asymmetric Project List */}
+        <section className="space-y-64 md:space-y-96">
+          {PROJECTS.filter(p => p.featured || PROJECTS.indexOf(p) < 3).map((project, index) => (
+            <Link 
+              key={project.id}
+              href={`/projects/${project.id}`}
+              className={cn(
+                "group grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center text-decoration-none color-inherit",
+                index % 2 !== 0 && "md:flex-row-reverse"
+              )}
+            >
+              {/* Image Container */}
+              <div className={cn(
+                "md:col-span-8 aspect-[16/10] bg-white rounded-sm border border-border overflow-hidden relative shadow-sm transition-all duration-700 group-hover:shadow-xl group-hover:shadow-accent/5",
+                index % 2 !== 0 && "md:order-2"
+              )}>
+                 <div className="absolute inset-0 bg-accent/20 opacity-40 flex items-center justify-center font-serif text-9xl italic font-extralight text-background transition-all duration-700 group-hover:scale-105 group-hover:opacity-60">
+                    {project.id}
+                 </div>
+              </div>
+
+              {/* Info Container */}
+              <div className={cn(
+                "md:col-span-4 flex flex-col gap-8",
+                index % 2 !== 0 && "md:order-1 md:text-right md:items-end"
+              )}>
+                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
+                    {project.tag}
+                </span>
+                <h2 className="font-serif text-5xl md:text-7xl font-light leading-[0.95] tracking-tighter">
+                    {project.title}
+                </h2>
+                <p className="text-sm md:text-base text-muted leading-relaxed max-w-sm">
+                    {project.description}
+                </p>
+                <div className="editorial-underline text-[10px] font-bold uppercase tracking-[0.2em] w-fit">
+                    Explore Work
+                </div>
+              </div>
             </Link>
-          </TacticalCard>
+          ))}
+        </section>
 
-          {/* Featured Project Preview (Brief) */}
-          <TacticalCard className="md:col-span-4 p-10 flex flex-col md:flex-row items-center justify-between gap-12 group cursor-pointer">
-             <div className="flex flex-col gap-2">
-               <span className="text-[10px] text-tactical font-bold uppercase tracking-[0.3em]">Latest Case Study</span>
-               <h3 className="text-3xl md:text-5xl font-bold text-primary tracking-tighter uppercase">{featuredProject.title}</h3>
-             </div>
-             <Link 
-               href="/projects"
-               className={cn(
-                 buttonVariants({ variant: "outline" }),
-                 "rounded-none border-white/10 px-8 py-5 md:py-6 text-[10px] font-bold uppercase tracking-widest hover:bg-primary hover:text-primary-foreground h-auto w-full md:w-auto text-center justify-center"
-               )}
-             >
-               View Details
-             </Link>
-          </TacticalCard>
-
-        </div>
       </div>
     </div>
   );
