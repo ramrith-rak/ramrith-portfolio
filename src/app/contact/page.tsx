@@ -49,7 +49,7 @@ export default function Contact() {
           </div>
 
           {/* Editorial CTA */}
-          <div className="md:col-span-7 bg-foreground text-background p-12 md:p-24 rounded-sm flex flex-col justify-between min-h-[500px] shadow-2xl shadow-foreground/10">
+          <div className="md:col-span-7 bg-foreground text-background p-12 md:p-24 rounded-sm flex flex-col justify-between gap-6 min-h-[600px] shadow-2xl shadow-foreground/10">
             <div className="space-y-12">
                <div className="flex items-center gap-4">
                   <div className="w-2 h-2 bg-accent animate-pulse rounded-full" />

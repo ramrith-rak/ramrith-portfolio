@@ -70,12 +70,6 @@ export const CONTACT_LINKS = [
   },
 ] as const;
 
-export const EXPERIENCE_METRIC = {
-  value: "2+YRS",
-  label: "Experience",
-  description: "Specializing in enterprise ERP, financial software, and AI-assisted engineering",
-} as const;
-
 export const NAV_ITEMS = [
   { name: "HOME", path: "/" },
   { name: "PROJECTS", path: "/projects" },

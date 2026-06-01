@@ -25,13 +25,13 @@ export default function Home() {
               key={project.id}
               href={`/projects/${project.id}`}
               className={cn(
-                "group grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center text-decoration-none color-inherit",
+                "group grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center no-underline text-inherit",
                 index % 2 !== 0 && "md:flex-row-reverse"
               )}
             >
               {/* Image Container */}
               <div className={cn(
-                "md:col-span-8 aspect-[16/10] bg-white rounded-sm border border-border overflow-hidden relative shadow-sm transition-all duration-700 group-hover:shadow-xl group-hover:shadow-accent/5",
+                "md:col-span-8 aspect-[16/10] bg-card rounded-sm border border-border overflow-hidden relative shadow-sm transition-all duration-700 group-hover:shadow-xl group-hover:shadow-accent/5",
                 index % 2 !== 0 && "md:order-2"
               )}>
                  <div className="absolute inset-0 bg-accent/20 opacity-40 flex items-center justify-center font-serif text-9xl italic font-extralight text-background transition-all duration-700 group-hover:scale-105 group-hover:opacity-60">

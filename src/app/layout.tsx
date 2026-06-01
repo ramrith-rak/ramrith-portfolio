@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono, Crimson_Pro } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
@@ -8,6 +8,7 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
+  display: "swap",
 });
 
 const crimsonPro = Crimson_Pro({
@@ -15,10 +16,19 @@ const crimsonPro = Crimson_Pro({
   subsets: ["latin"],
   weight: ["200", "300", "400"],
   style: ["normal", "italic"],
+  display: "swap",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
-  title: "Ramrith Rakpoun (Ram) | UX/UI Designer",
+  title: {
+    default: "Ramrith Rakpoun (Ram) | UX/UI Designer",
+    template: "%s | Ramrith Rakpoun",
+  },
   description: "UX/UI Designer & Creative Engineer focused on high-utility digital experiences.",
 };
 

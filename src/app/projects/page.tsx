@@ -1,6 +1,12 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { PROJECTS } from "@/lib/data";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Selected Case Studies",
+  description: "A rigorous exploration of digital frontiers, focusing on high-utility design engineering and human-centric logic.",
+};
 
 export default function Projects() {
   return (
@@ -31,7 +37,7 @@ export default function Projects() {
               )}
             >
               <div className={cn(
-                "md:col-span-7 aspect-[16/10] bg-white rounded-sm border border-border overflow-hidden relative shadow-sm transition-all duration-700 group-hover:shadow-xl group-hover:shadow-accent/5",
+                "md:col-span-7 aspect-[16/10] bg-card rounded-sm border border-border overflow-hidden relative shadow-sm transition-all duration-700 group-hover:shadow-xl group-hover:shadow-accent/5",
                 index % 2 !== 0 && "md:order-2"
               )}>
                  <div className="absolute inset-0 bg-accent/10 flex items-center justify-center font-serif text-9xl italic font-extralight text-background transition-all duration-700 group-hover:scale-105">
