@@ -14,7 +14,7 @@ const jetbrainsMono = JetBrains_Mono({
 const crimsonPro = Crimson_Pro({
   variable: "--font-crimson-pro",
   subsets: ["latin"],
-  weight: ["200", "300", "400"],
+  weight: ["200", "300", "400", "700"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -25,6 +25,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ramrith-rak.github.io/ramrith-portfolio"),
   title: {
     default: "Ramrith Rakpoun (Ram) | UX/UI Designer",
     template: "%s | Ramrith Rakpoun",

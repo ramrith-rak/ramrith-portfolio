@@ -28,11 +28,8 @@ export default function About() {
               Hi, I&apos;m<br />
               <i className="font-light italic">Ramrith.</i>
             </h1>
-            <p className="text-lg md:text-xl font-mono text-muted max-w-lg leading-relaxed">
-              I&apos;m a UX/UI Designer from Thailand with over 2 years of experience. I look at software from start to finish by gathering client needs, designing the UI, and building features using AI tools like Claude Code.
-            </p>
-            <p className="text-base md:text-lg font-mono text-muted max-w-lg leading-relaxed mt-4">
-              I believe combining skills creates unique and practical solutions that solve business problems fast.
+            <p className="text-lg md:text-xl font-mono text-foreground/75 max-w-lg leading-relaxed">
+              UX/UI Designer from Thailand with over 2 years of experience in enterprise ERP and financial software. I work across the full product cycle — gathering requirements, designing interfaces, and building features with AI-assisted engineering — so the final software works, not just looks good.
             </p>
             <div className="flex items-center gap-6 mt-10">
               <a
@@ -56,13 +53,16 @@ export default function About() {
         {/* About Me */}
         <section className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 mb-32 md:mb-48">
           <div className="md:col-span-4">
-            <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-6">
+            <h2 className="font-serif text-3xl md:text-4xl font-light tracking-tight mb-6">
               About Me
-            </h3>
+            </h2>
           </div>
           <div className="md:col-span-8 space-y-6">
             <p className="text-base md:text-lg leading-relaxed text-foreground/80 font-mono">
-              I&apos;m a tech generalist with over 2 years of experience in enterprise ERP and financial software. My core strength is bridging the gap between business goals and development teams. Instead of just handing off a UI design, I work across the entire product cycle to make sure the final software works perfectly.
+              Good software starts with understanding the problem before touching the interface. I begin every project by listening — to stakeholders, to users, to the constraints most people skip. Then I design and build with those constraints as the foundation, not an afterthought.
+            </p>
+            <p className="text-base md:text-lg leading-relaxed text-foreground/80 font-mono">
+              What sets me apart is that I don&apos;t stop at design files. I work inside the codebase, manage database tables, and ship features alongside developers. The result is software that works the way it was designed to — without anything lost in translation.
             </p>
           </div>
         </section>
@@ -71,8 +71,8 @@ export default function About() {
         <section className="space-y-24 md:space-y-32">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
             <div className="md:col-span-4">
-              <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-2">01</div>
-              <h3 className="font-serif text-2xl md:text-3xl font-light tracking-tight">Business Analysis</h3>
+              <span className="font-serif text-7xl md:text-8xl font-light leading-none text-foreground/[0.06] select-none" aria-hidden="true">01</span>
+              <h3 className="font-serif text-2xl md:text-3xl font-light tracking-tight mt-3">Business Analysis</h3>
             </div>
             <div className="md:col-span-8">
               <p className="text-base md:text-lg leading-relaxed text-foreground/80 font-mono">
@@ -81,10 +81,12 @@ export default function About() {
             </div>
           </div>
 
+          <hr className="border-t border-border" />
+
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
             <div className="md:col-span-4">
-              <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-2">02</div>
-              <h3 className="font-serif text-2xl md:text-3xl font-light tracking-tight">UX/UI Design</h3>
+              <span className="font-serif text-7xl md:text-8xl font-light leading-none text-foreground/[0.06] select-none" aria-hidden="true">02</span>
+              <h3 className="font-serif text-2xl md:text-3xl font-light tracking-tight mt-3">UX/UI Design</h3>
             </div>
             <div className="md:col-span-8">
               <p className="text-base md:text-lg leading-relaxed text-foreground/80 font-mono">
@@ -93,10 +95,12 @@ export default function About() {
             </div>
           </div>
 
+          <hr className="border-t border-border" />
+
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
             <div className="md:col-span-4">
-              <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-2">03</div>
-              <h3 className="font-serif text-2xl md:text-3xl font-light tracking-tight">UX Engineering</h3>
+              <span className="font-serif text-7xl md:text-8xl font-light leading-none text-foreground/[0.06] select-none" aria-hidden="true">03</span>
+              <h3 className="font-serif text-2xl md:text-3xl font-light tracking-tight mt-3">UX Engineering</h3>
             </div>
             <div className="md:col-span-8">
               <p className="text-base md:text-lg leading-relaxed text-foreground/80 font-mono">

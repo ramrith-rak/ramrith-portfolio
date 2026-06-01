@@ -8,7 +8,7 @@ export function Footer() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col items-center text-center gap-12 mb-32">
           <h2 className="font-serif text-6xl md:text-9xl font-light tracking-tighter leading-none max-w-4xl">
-            Let&apos;s build something <i className="font-light">intentional.</i>
+            Let&apos;s build something <i className="font-light">worth the details.</i>
           </h2>
           <a 
             href="mailto:ramrith.rak@gmail.com"
@@ -34,7 +34,7 @@ export function Footer() {
             <a href="https://linkedin.com/in/ramrith-rak" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">LinkedIn</a>
             <a href="https://github.com/ramrith-rak" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">GitHub</a>
             <a href={asset("/resume.pdf")} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">Resume</a>
-            <span>© 2026 — INTENTION</span>
+            <span>© 2026</span>
           </div>
         </div>
       </div>

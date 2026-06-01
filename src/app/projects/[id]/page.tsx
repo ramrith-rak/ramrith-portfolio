@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PROJECTS } from "@/lib/data";
+import { PROJECTS, CONTACT_LINKS } from "@/lib/data";
 import { PROJECT_CONTENT } from "@/lib/projects";
 import { SectionRenderer } from "@/components/projects/section-renderer";
 import { ClickableImage } from "@/components/image-lightbox";
-import { asset } from "@/lib/utils";
+import { asset, basePath } from "@/lib/utils";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 export async function generateStaticParams() {
@@ -19,9 +19,21 @@ export async function generateMetadata({
   const { id } = await params;
   const project = PROJECTS.find((p) => p.id === id);
   if (!project) return { title: "Project Not Found" };
+  const imageUrl = project.image ? `${basePath}${project.image}` : undefined;
   return {
     title: `${project.title} — ${project.tag}`,
     description: project.description,
+    openGraph: {
+      title: `${project.title} — ${project.tag}`,
+      description: project.description,
+      ...(imageUrl && { images: [{ url: imageUrl, width: 1200, height: 630 }] }),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} — ${project.tag}`,
+      description: project.description,
+      ...(imageUrl && { images: [imageUrl] }),
+    },
   };
 }
 
@@ -34,6 +46,8 @@ export default async function ProjectPage({
   const project = PROJECTS.find((p) => p.id === id);
   const content = PROJECT_CONTENT[id];
   if (!project || !content) notFound();
+
+  const emailLink = CONTACT_LINKS.find((l) => l.name === "Email")?.href ?? "mailto:ramrith.rak@gmail.com";
 
   return (
     <div className="container mx-auto px-6 md:px-12 py-32 md:py-48 animate-in fade-in duration-1000">
@@ -143,7 +157,7 @@ export default async function ProjectPage({
             </p>
           </div>
           <a
-            href="mailto:ramrith.rak@gmail.com"
+            href={emailLink}
             className="group inline-flex items-center gap-3 bg-foreground text-background px-10 py-5 rounded-md text-xs font-bold uppercase tracking-[0.3em] transition-all hover:bg-accent hover:text-foreground hover:-translate-y-0.5 hover:shadow-xl hover:shadow-accent/20"
           >
             Start a Conversation

@@ -3,32 +3,41 @@ import Link from "next/link";
 import { PROJECTS } from "@/lib/data";
 import { ClickableImage } from "@/components/image-lightbox";
 
+const CTA_LABELS: Record<string, string> = {
+  "01": "Explore the Platform",
+  "02": "Read the Case Study",
+  "03": "View the Redesign",
+  "04": "Read the Thesis",
+  "05": "See the Flow",
+};
+
 export default function Home() {
   return (
-    <div className="container mx-auto px-6 md:px-12 py-32 md:py-48 animate-in fade-in duration-1000">
+    <div className="container mx-auto px-6 md:px-12 py-32 md:py-48">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Editorial Hero */}
-        <header className="mb-48 md:mb-72">
-            <h1 className="font-serif text-7xl sm:text-8xl md:text-[10rem] font-light leading-[0.85] tracking-tighter mb-12">
+        <header className="reveal-item mb-48 md:mb-72">
+            <h1 className="font-serif text-[clamp(3.5rem,8vw,6rem)] font-light leading-[0.9] tracking-[-0.03em] mb-8 md:mb-12">
                 Ramrith Rakpoun<br />
                 <i className="font-light italic">Design Engineer.</i>
             </h1>
-            <p className="text-lg md:text-xl font-mono text-muted max-w-lg leading-relaxed ml-2">
-                Crafting intentional digital experiences at the intersection of high-utility logic and soulful minimalism.
+            <p className="text-lg md:text-xl text-foreground/70 max-w-lg leading-relaxed">
+                I design and build interfaces that make complex systems feel simple. Based in Bangkok, working worldwide.
             </p>
         </header>
 
         {/* Vertical Asymmetric Project List */}
         <section className="space-y-64 md:space-y-96">
           {PROJECTS.filter(p => p.featured || PROJECTS.indexOf(p) < 3).map((project, index) => (
-            <Link 
+            <Link
               key={project.id}
               href={`/projects/${project.id}`}
               className={cn(
-                "group grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center no-underline text-inherit",
+                "group grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center no-underline text-inherit reveal-item",
                 index % 2 !== 0 && "md:flex-row-reverse"
               )}
+              style={{ animationDelay: `${200 + index * 150}ms` }}
             >
               {/* Image Container */}
               <div className={cn(
@@ -58,7 +67,7 @@ export default function Home() {
                     {project.description}
                 </p>
                 <div className="editorial-underline text-[10px] font-bold uppercase tracking-[0.2em] w-fit">
-                    Explore Work
+                    {CTA_LABELS[project.id] || "View Case Study"}
                 </div>
               </div>
             </Link>
