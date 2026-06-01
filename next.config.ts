@@ -1,7 +1,18 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === "production";
+const repo = process.env.GITHUB_REPOSITORY?.split("/")[1];
+const basePath = isProd && repo && repo !== `${process.env.GITHUB_REPOSITORY?.split("/")[0]}.github.io` 
+  ? `/${repo}` 
+  : "";
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: "export",
+  basePath: basePath,
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;

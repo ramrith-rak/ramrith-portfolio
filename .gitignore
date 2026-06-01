@@ -39,3 +39,24 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# agentic ai
+.agents/
+.antigravitycli/
+skills-lock.json
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+our_plan.md
+
+# personal
+notion/
+
+# editor folders
+.vscode/
+.idea/
+
+# os general
+Thumbs.db
+ehthumbs.db
+.DS_Store
