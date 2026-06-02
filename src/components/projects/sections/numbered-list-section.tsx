@@ -3,7 +3,7 @@ export function NumberedListSection({
   items,
 }: {
   heading: string;
-  items: { label: string; body: string }[];
+  items: { label: string; body?: string; subitems?: { label: string; body: string }[] }[];
 }) {
   return (
     <section className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
@@ -23,9 +23,25 @@ export function NumberedListSection({
                 {item.label}
               </h4>
             </div>
-            <p className="text-sm md:text-base leading-relaxed text-foreground/70 font-mono pl-10">
-              {item.body}
-            </p>
+            {item.body && (
+              <p className="text-sm md:text-base leading-relaxed text-foreground/70 font-mono pl-10 mb-4">
+                {item.body}
+              </p>
+            )}
+            {item.subitems && item.subitems.length > 0 && (
+              <ul className="pl-10 space-y-3">
+                {item.subitems.map((sub, j) => (
+                  <li key={j} className="flex items-start gap-3">
+                    <span className="w-1 h-1 bg-accent/50 rounded-full mt-2.5 shrink-0" />
+                    <p className="text-sm md:text-base leading-relaxed text-foreground/70 font-mono">
+                      <span className="text-foreground/90 font-medium">{sub.label}</span>
+                      {": "}
+                      {sub.body}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         ))}
       </div>

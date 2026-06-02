@@ -4,28 +4,46 @@ export const project02: CaseStudyProject = {
   id: "02",
   tag: "PRODUCT DESIGN",
   title: "HRM - VIBE CODING",
-  description: "Full-stack HR management platform designed and built using AI-assisted development (Vibe Coding). 60+ screens across 7 functional modules.",
+  description: "A full-stack HR management web application designed and built using AI-assisted development (Vibe Coding) to digitize paper timesheets, leave requests, and expense claims.",
   type: "WEB APP",
   featured: true,
   image: "/projects/02/hero.png",
-  role: "UX/UI Designer (Sole Designer)",
+  role: "UX/UI Designer (Sole Designer and System Architect)",
   timeline: "1 Month (Feb 2026 – Mar 2026)",
-  tools: ["Agentic AI", "Next.js 16", "React 19", "MUI v7", "TypeScript", "PostgreSQL"],
+  tools: ["Agentic AI", "Next.js 16", "React 19", "MUI v7", "TypeScript", "PostgreSQL", "Prisma"],
   sections: [
     {
       type: "text-group",
-      heading: "The Problem",
+      heading: "Overview",
       paragraphs: [
-        "Most companies still run HR on paper. Timesheets are scribbled on desks. Leave requests go through chat messages. Expense claims pile up in inboxes. For employees, every HR task is friction. For HR teams, every process is manual reconciliation.",
-        "I experienced this firsthand. One morning, I went directly to a client site and couldn't clock in — the system only worked from the office. That moment of frustration became the seed for this entire project.",
+        "Personal project built to address active organizational inefficiencies. Responsive web application (desktop and mobile) built entirely with AI-assisted development (vibe coding).",
+        "Scale: 60+ screens · 300+ components · 7 functional modules.",
+      ],
+    },
+    {
+      type: "bullet-list",
+      heading: "The Problem",
+      items: [
+        "Inflexible Attendance Tracking: Staff were required to manually sign a paper timesheet at the physical office. For field personnel traveling directly to client sites in the morning, clocking in was physically impossible, resulting in unrecorded working hours and inaccurate timesheets.",
+        "Delayed Leave Request Routing: Requesting leave required printing a physical form, walking it to a supervisor for a signature, and physically delivering it to HR. If a supervisor was off-site or occupied, requests remained stalled.",
+        "Vulnerable Expense Management: Expenses required out-of-pocket payments followed by manual paper logging. The delay between transaction and filing often led to lost physical receipts and late reimbursements.",
       ],
     },
     {
       type: "text-group",
       heading: "The Approach",
       paragraphs: [
-        "I used Vibe Coding — directing AI as the architect while it builds as the engineer. Every design decision was mine; the AI executed the implementation. This let me design at the speed of thought: define the UX, describe the component, and see it working within minutes.",
-        "The result is a production-scale HRM platform with 60+ screens, 300+ components, and 7 functional modules — all built from design direction without writing code by hand.",
+        "As a designer, rather than producing static mockups, I used AI-assisted development (vibe coding) to construct a working application.",
+        "Under this model, the designer operates as the architect and product manager, defining user flows, database structures, interface layouts, and edge-case behavior. The AI executes the code generation. This direct feedback loop allowed for immediate usability testing against real-world database records, shifting the focus from visual representation to operational correctness.",
+      ],
+    },
+    {
+      type: "bullet-list",
+      heading: "What I Designed",
+      items: [
+        "To serve distinct users without cluttering the interface, the platform implements role-based progressive disclosure. Regular employees access personal tracking modules, while managers and administrative personnel access high-density dashboard panels, approval queues, and organization configuration systems.",
+        "Employee View: Dashboard (Personal) · Attendance: Clock In/Out, History, OT Request, Schedule Change · Leave: Request, History · Expenses: New Expense, Drafts, History · Support Tickets · My Requests · Profile",
+        "HR / Admin View: Dashboard (Personal + HR + Finance) · Attendance: Daily Monitoring (All Staff), Analytics & Reporting, OT / Holiday-Work Config · Approvals Hub: HR (Leave, OT, Schedule), Finance (Expenses), IT (Support Tickets) · Employee Management · Organization Analytics · Settings (20+ config pages)",
       ],
     },
     {
@@ -33,32 +51,94 @@ export const project02: CaseStudyProject = {
       heading: "Key Design Decisions",
       items: [
         {
-          label: "Attendance — Solving My Own Pain Point",
-          body: "Clock in from anywhere with geofencing verification. Multi-session support lets field staff log multiple work periods in a day. An auto-checkout safety net prevents accidental overnight sessions if someone forgets to clock out.",
+          label: "Attendance Verification and Location Tracking",
+          body: "Designed to eliminate check-in constraints for off-site workers while maintaining security parameters:",
+          subitems: [
+            {
+              label: "Contextual Work Modes",
+              body: "Staff choose between Office, WFH, or Offsite check-ins.",
+            },
+            {
+              label: "Haversine Geofencing",
+              body: "When selecting the Office mode, the device compares GPS coordinates against registered office locations using Haversine distance calculations. If the user is outside the radius, the system redirects them to log specific site details.",
+            },
+            {
+              label: "Bangkok Time Zone Normalization",
+              body: "To prevent shifts and clock-in errors caused by client-side time-zone variations, the system normalizes all server interactions to Asia/Bangkok time (ICT) using UTC-date boundaries.",
+            },
+            {
+              label: "SWR-Based Session Synchronization",
+              body: "Implemented SWR (Stale-While-Revalidate) cache pooling on the client to instantly synchronize check-in and checkout states across multiple devices, preventing dual-session conflicts.",
+            },
+          ],
         },
         {
-          label: "Dashboard — Role-Adaptive Views",
-          body: "The dashboard changes based on who's looking. Employees see their own attendance, pending requests, and upcoming events. HR sees org-wide analytics, approval queues, and exception alerts. Lazy-loaded tabs keep the initial render fast despite the data density.",
+          label: "Dashboard Interface",
+          body: "An adaptive hub tailored to specific operational roles:",
+          subitems: [
+            {
+              label: "Employee View",
+              body: "Displays real-time shift status, available leave balances, personal request status logs, and immediate actions.",
+            },
+            {
+              label: "HR and Administrative View",
+              body: "Features live attendance monitors, pending approval notifications grouped by domain, and departmental KPI visualizations.",
+            },
+            {
+              label: "IT Support View",
+              body: "Displays ticket tracking pipelines and incoming resolution queues.",
+            },
+            {
+              label: "Lazy-Loaded Modules",
+              body: "Heavy components and tabs load dynamically to minimize initial page load latency and database queries.",
+            },
+          ],
         },
         {
-          label: "Leave Requests — Paper to Digital",
-          body: "Replaced a multi-step paper process with a single-screen digital flow. Employees select dates, attach evidence, and submit. The system auto-calculates remaining leave balances and enforces Thai-specific policies like prorated entitlements for new hires.",
+          label: "Leave Request Workflow",
+          body: "Replaced physical forms with an automated policy engine:",
+          subitems: [
+            {
+              label: "Automatic Leave Balances",
+              body: "The dashboard dynamically displays remaining quotas, eliminating manual calculations and HR queries.",
+            },
+            {
+              label: "Thai Labor Law Guardrails",
+              body: "The interface enforces local statutory policies, including gender-based leave type configurations, probation periods, career-level rules, and tenure milestones.",
+            },
+          ],
         },
         {
-          label: "Expenses — Draft-First Workflow",
-          body: "Instead of a single-shot form, expenses are saved as drafts by default. Users can attach photos of receipts, build up a claim over several days, and submit when ready. Vehicle reimbursement auto-calculates based on distance and rate per kilometer.",
+          label: "Expense Capture",
+          body: "Designed to prevent receipt loss with a draft-first mobile lifecycle:",
+          subitems: [
+            {
+              label: "Immediate Logging",
+              body: "Employees capture a receipt and categorize it immediately, saving it locally as a draft.",
+            },
+            {
+              label: "Floating Bulk Actions",
+              body: "A floating contextual bulk-action bar appears upon selecting multiple draft cards, calculating totals dynamically and enabling single-click batch submission.",
+            },
+            {
+              label: "Automated Mileage Calculations",
+              body: "Vehicle reimbursement inputs auto-calculate financial amounts by multiplying entered travel distances by configured organizational rates.",
+            },
+          ],
         },
         {
-          label: "Approvals Hub — One Place for Everything",
-          body: "HR, Finance, and IT approvals converge in a single view. Approvers see the request type, submitter, urgency, and supporting documents without switching contexts. Batch approve/reject handles high-volume periods.",
-        },
-        {
-          label: "Events & Meetings — Calendar with Teeth",
-          body: "Company events appear in an in-app calendar with RSVP tracking. Meeting invites detect conflicts across attendees. Reminders push to the dashboard so events don't get buried in email.",
-        },
-        {
-          label: "Organization Analytics — Seeing the Whole Picture",
-          body: "HR leaders get a high-level view of attendance patterns, employee distribution across departments, and leave utilization trends. Designed for quarterly reviews and workforce planning, not daily monitoring.",
+          label: "Consolidated Approvals Hub",
+          body: "A centralized system to manage pending organizational actions:",
+          subitems: [
+            {
+              label: "Categorized Queues",
+              body: "Approvals are separated into HR (leave, overtime, shifts), Finance (expenses), and IT (support requests).",
+            },
+            {
+              label: "Batch Action Controls",
+              body: "HR managers can select multiple requests to approve or reject them in a single action, reducing administrative overhead.",
+            },
+          ],
         },
       ],
     },
@@ -66,9 +146,69 @@ export const project02: CaseStudyProject = {
       type: "text-group",
       heading: "Design System",
       paragraphs: [
-        "Thai-first localization: every label, error message, and notification was designed in Thai first, then translated to English — not the reverse. This matters because Thai text runs 15-20% longer than English, so layouts must accommodate expansion.",
-        "Visual language: MUI v7 components customized into a card-based, color-coded system. Modules have distinct accent colors so employees navigating between sections always know where they are. Micro-animations provide feedback on state changes (clock-in confirms with a subtle pulse, approvals transition with a slide).",
-        "The component library follows Atomic Design: atoms (buttons, inputs, badges) → molecules (date pickers, status chips, approval cards) → organisms (attendance tracker, leave form, expense builder) → templates (employee dashboard, HR command center).",
+        "Thai-First Localization: The application was built from the ground up to support Thai operational requirements. Interface text uses natural Thai terminology matching standard business language. The system implements th-TH-u-ca-gregory locale parameters for currency symbols (฿) and Buddhist calendar date formats.",
+        "Custom MUI Registry and Styling: Built using Material UI v7 component configurations with custom theme overrides. A styled theme registry implements custom CSS overrides to maintain styling consistency across input fields, select menus, and datetime pickers in both light and dark modes. The layout transitions from structured desktop side-sheets to mobile bottom-sheet drawers, utilizing minimum 48px interactive touch targets.",
+      ],
+    },
+    {
+      type: "bullet-list",
+      heading: "Build Process & Quality Control",
+      items: [
+        "Codebase Statistics: 467 files, approximately 80,000 lines of code, and 60 database models. Built entirely using AI-assisted development (vibe coding) under strict engineering guidelines.",
+        "Modular Architecture: Business logic isolated into src/features/{domain} structures, dividing Server Actions (mutations) and Prisma queries (reads) to maintain clean separation of concerns.",
+        "Automated Verification: Unit and integration tests using Jest and React Testing Library. Security-focused tests cover NextAuth configuration, route guards, API endpoint permissions, and OTP generation.",
+      ],
+    },
+    {
+      type: "numbered-list",
+      heading: "Challenges & Constraints",
+      items: [
+        {
+          label: "Timezone Synchronization and Shift Splits",
+          subitems: [
+            {
+              label: "The Challenge",
+              body: "Employees logging shifts near midnight or from traveling devices created fragmented attendance rows, shifting dates in the database when using standard UTC string serialization.",
+            },
+            {
+              label: "The Solution",
+              body: "Implemented localized date-key helper functions (toBangkokDateOnly and isoStringToDateKey) that isolate local Thai time calculations, bypassing direct UTC timezone shifts at the database transaction layer.",
+            },
+          ],
+        },
+        {
+          label: "Dark Mode Input Inconsistencies in MUI X Pickers",
+          subitems: [
+            {
+              label: "The Challenge",
+              body: "Native MUI X date pickers and select menus displayed broken backgrounds and unreadable text in dark mode due to conflicting style sheets and global overrides.",
+            },
+            {
+              label: "The Solution",
+              body: "Registered custom theme augmentations inside the theme configuration, forcing text fields and pickers to adopt theme token variables with strict CSS priority overrides.",
+            },
+          ],
+        },
+        {
+          label: "Stale Attendance States across Devices",
+          subitems: [
+            {
+              label: "The Challenge",
+              body: "Users logging out on mobile devices still saw active sessions on open desktop browser tabs, leading to data collisions.",
+            },
+            {
+              label: "The Solution",
+              body: "Integrated SWR-based data fetching for live attendance sessions, triggering immediate component revalidation upon window focus to force device state parity.",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: "text-group",
+      heading: "Business & User Impact",
+      paragraphs: [
+        "The application replaces manual paper operations with a centralized digital infrastructure, enabling real-time attendance verification, automated calculation of leaves and overtime, and cross-departmental approval workflows.",
       ],
     },
     {
@@ -79,19 +219,26 @@ export const project02: CaseStudyProject = {
       type: "image-grid",
       heading: "Screenshots",
       images: [
-        { src: "/projects/02/hero.png", alt: "HRM dashboard with role-adaptive views", caption: "Role-adaptive dashboard — employee view with attendance, requests, and events" },
-        { src: "/projects/02/detail-1.png", alt: "HRM approvals and leave management screens", caption: "Leave requests and approvals hub — multi-step paper process replaced with a single-screen digital flow" },
+        { src: "/projects/02/hero.png", alt: "HRM dashboard with role-adaptive views", caption: "Role-adaptive dashboard: employee view with attendance, requests, and events" },
+        { src: "/projects/02/detail-1.png", alt: "HRM approvals and leave management screens", caption: "Leave requests and approvals hub: multi-step paper process replaced with a single-screen digital flow" },
       ],
     },
     {
       type: "learnings",
       heading: "What I Learned",
       items: [
-        "Solve your own problems. The best design work comes from genuine frustration — you already understand the user because you are the user.",
-        "Vibe Coding changes what's possible. When the cost of building a feature is a conversation instead of a sprint, designers can be far more ambitious about scope and polish.",
-        "Thai-first design is rare. Most enterprise software in Thailand is localized from English. Designing in Thai first produced more natural IA and interaction patterns.",
-        "Design the boring stuff. Attendance tracking and expense claims aren't glamorous, but they're where employees spend real time. Making the mundane frictionless earns more goodwill than a flashy dashboard.",
-        "Progressive disclosure in enterprise UX. Power users (HR admins) need everything at their fingertips. Casual users (employees clocking in) need one thing, fast. The same app must feel simple and powerful depending on who's looking.",
+        "Compassionate Design with Safe Defaults: Edge cases like forgotten checkouts should be managed gracefully. The implementation of the retrospective auto-checkout corrected records through helper notifications rather than strict penalties, creating a more cooperative user experience.",
+        "Immediate Prototyping Shortens Feedback Loops: Building functional React and Next.js applications directly from specifications allows designers to perform usability tests on complex databases early, catching structural flow issues that static mockups omit.",
+        "Localization Goes Beyond Language: Designing for a specific region involves accommodating distinct calendar systems, formatting conventions, and local employment policies at the base level of the application architecture.",
+      ],
+    },
+    {
+      type: "bullet-list",
+      heading: "What I'd Improve Next",
+      items: [
+        "Visual RBAC Auditor — Create an administrative screen to visually display and manage scoped role-permission overrides instead of auditing direct database tables.",
+        "Integrated Payout Workflow — Introduce a dedicated reimbursement status workflow in the approvals dashboard to close the payment lifecycle for approved expenses.",
+        "Explicit IT Scope Permission Matrix — Transition IT ticket visibility logic from basic department codes to a custom-defined permission access matrix.",
       ],
     },
   ],

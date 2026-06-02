@@ -20,7 +20,7 @@ export interface CaseStudyProject extends ProjectBase {
 export type CaseStudySection =
   | { type: "text"; heading: string; body: string }
   | { type: "text-group"; heading: string; paragraphs: string[] }
-  | { type: "numbered-list"; heading: string; items: { label: string; body: string }[] }
+  | { type: "numbered-list"; heading: string; items: { label: string; body?: string; subitems?: { label: string; body: string }[] }[] }
   | { type: "bullet-list"; heading: string; items: string[] }
   | { type: "image"; src: string; alt: string; caption?: string }
   | { type: "image-grid"; heading?: string; images: { src: string; alt: string; caption?: string }[] }
