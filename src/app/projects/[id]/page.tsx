@@ -95,7 +95,7 @@ export default async function ProjectPage({
           </div>
         ) : null}
 
-        {/* PDF Download (for projects with an asset like Catopia) */}
+        {/* PDF Download (for projects with an asset like Petopia) */}
         {"asset" in project && project.asset && (
           <div className="mb-32 md:mb-48 text-center">
             <a

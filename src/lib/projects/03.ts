@@ -3,7 +3,7 @@ import type { CaseStudyProject } from "@/lib/types";
 export const project03: CaseStudyProject = {
   id: "03",
   tag: "GAME DESIGN",
-  title: "CATOPIA",
+  title: "PETOPIA",
   description: "Thesis project: Gamified English vocabulary learning using image recognition and monster-petting interactions.",
   type: "ACADEMIC",
   featured: false,
@@ -16,7 +16,7 @@ export const project03: CaseStudyProject = {
       type: "text-group",
       heading: "Overview",
       paragraphs: [
-        "Catopia is a gamified mobile application that helps users learn English vocabulary through image recognition and virtual pet interactions. It was developed as my fourth-year thesis project at university.",
+        "Petopia is a gamified mobile application that helps users learn English vocabulary through image recognition and virtual pet interactions. It was developed as my fourth-year thesis project at university.",
         "The core mechanic pairs language learning with monster collection: users photograph real-world objects, the app identifies them and teaches the corresponding English word, and the user's monster pet grows and evolves as they learn.",
       ],
     },
