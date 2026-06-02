@@ -24,7 +24,7 @@ export default function About() {
             </div>
           </div>
           <div className="md:col-span-7">
-            <h1 className="font-serif text-6xl md:text-8xl font-light leading-[0.9] tracking-tighter mb-8">
+            <h1 className="font-serif text-6xl md:text-8xl font-light leading-[0.9] tracking-[-0.03em] mb-8">
               Hi, I&apos;m<br />
               <i className="font-light italic">Ramrith.</i>
             </h1>

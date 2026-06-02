@@ -4,11 +4,9 @@ import { PROJECTS } from "@/lib/data";
 import { ClickableImage } from "@/components/image-lightbox";
 
 const CTA_LABELS: Record<string, string> = {
-  "01": "Explore the Platform",
-  "02": "Read the Case Study",
-  "03": "View the Redesign",
-  "04": "Read the Thesis",
-  "05": "See the Flow",
+  "01": "Read the Case Study",
+  "02": "Explore the Platform",
+  "03": "Read the Thesis",
 };
 
 export default function Home() {
@@ -20,10 +18,10 @@ export default function Home() {
         <header className="reveal-item mb-48 md:mb-72">
             <h1 className="font-serif text-[clamp(3.5rem,8vw,6rem)] font-light leading-[0.9] tracking-[-0.03em] mb-8 md:mb-12">
                 Ramrith Rakpoun<br />
-                <i className="font-light italic">Design Engineer.</i>
+                <i className="font-light italic">UX/UI Designer.</i>
             </h1>
             <p className="text-lg md:text-xl text-foreground/70 max-w-lg leading-relaxed">
-                I design and build interfaces that make complex systems feel simple. Based in Bangkok, working worldwide.
+                I work across the full product cycle: collecting business requirements, designing interfaces, and writing code. Based in Bangkok, working worldwide.
             </p>
         </header>
 
@@ -41,13 +39,13 @@ export default function Home() {
             >
               {/* Image Container */}
               <div className={cn(
-                "md:col-span-8 aspect-[16/10] rounded-sm border border-border overflow-hidden relative shadow-sm transition-all duration-700 group-hover:shadow-xl group-hover:shadow-accent/5",
+                "md:col-span-8 aspect-[16/10] bg-[#F5F3F0] rounded-sm border border-border overflow-hidden relative shadow-sm transition-all duration-700 group-hover:shadow-[0_8px_32px_-4px_rgba(113,146,192,0.12)] group-hover:-translate-y-1",
                 index % 2 !== 0 && "md:order-2"
               )}>
                  <ClickableImage
                    src={project.image}
                    alt={project.title}
-                   className="absolute inset-0 w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                   className="absolute inset-0 w-full h-full p-6 md:p-10 object-contain transition-all duration-700"
                    loading={index === 0 ? "eager" : "lazy"}
                  />
               </div>
@@ -60,7 +58,7 @@ export default function Home() {
                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent">
                     {project.tag}
                 </span>
-                <h2 className="font-serif text-5xl md:text-7xl font-light leading-[0.95] tracking-tighter">
+                <h2 className="font-serif text-5xl md:text-7xl font-light leading-[0.95] tracking-tight">
                     {project.title}
                 </h2>
                 <p className="text-sm md:text-base text-muted leading-relaxed max-w-sm">
