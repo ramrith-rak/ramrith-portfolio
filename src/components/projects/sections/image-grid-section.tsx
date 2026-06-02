@@ -17,11 +17,11 @@ export function ImageGridSection({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {images.map((img, i) => (
           <div key={i}>
-            <div className="aspect-[16/10] rounded-sm border border-border overflow-hidden relative shadow-sm">
+            <div className="aspect-[16/10] bg-[#F5F3F0] rounded-sm border border-border overflow-hidden relative shadow-sm hover:shadow-[0_8px_32px_-4px_rgba(113,146,192,0.12)] hover:-translate-y-1 transition-all duration-700">
               <ClickableImage
                 src={img.src}
                 alt={img.alt}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full p-6 md:p-8 object-contain transition-all duration-700"
                 loading="lazy"
               />
             </div>

@@ -1,7 +1,6 @@
-import { cn } from "@/lib/utils";
+import { cn, asset } from "@/lib/utils";
 import Link from "next/link";
 import { PROJECTS } from "@/lib/data";
-import { ClickableImage } from "@/components/image-lightbox";
 
 const CTA_LABELS: Record<string, string> = {
   "01": "Read the Case Study",
@@ -31,10 +30,7 @@ export default function Home() {
             <Link
               key={project.id}
               href={`/projects/${project.id}`}
-              className={cn(
-                "group grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center no-underline text-inherit reveal-item",
-                index % 2 !== 0 && "md:flex-row-reverse"
-              )}
+              className="group grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-center no-underline text-inherit reveal-item"
               style={{ animationDelay: `${200 + index * 150}ms` }}
             >
               {/* Image Container */}
@@ -42,8 +38,8 @@ export default function Home() {
                 "md:col-span-8 aspect-[16/10] bg-[#F5F3F0] rounded-sm border border-border overflow-hidden relative shadow-sm transition-all duration-700 group-hover:shadow-[0_8px_32px_-4px_rgba(113,146,192,0.12)] group-hover:-translate-y-1",
                 index % 2 !== 0 && "md:order-2"
               )}>
-                 <ClickableImage
-                   src={project.image}
+                 <img
+                   src={asset(project.thumbnail || project.image || "")}
                    alt={project.title}
                    className="absolute inset-0 w-full h-full p-6 md:p-10 object-contain transition-all duration-700"
                    loading={index === 0 ? "eager" : "lazy"}

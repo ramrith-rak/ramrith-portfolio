@@ -6,6 +6,7 @@ export interface ProjectBase {
   type: string;
   featured: boolean;
   image: string | null;
+  thumbnail?: string;
   asset?: string;
 }
 

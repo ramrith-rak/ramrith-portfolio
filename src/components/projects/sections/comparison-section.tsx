@@ -24,11 +24,11 @@ export function ComparisonSection({
             <span className="block text-[10px] font-bold uppercase tracking-[0.3em] text-muted mb-3">
               Before
             </span>
-            <div className="aspect-[4/3] rounded-sm border border-border overflow-hidden relative bg-card/50">
+            <div className="aspect-[4/3] bg-[#F5F3F0] rounded-sm border border-border overflow-hidden relative shadow-sm hover:shadow-[0_8px_32px_-4px_rgba(113,146,192,0.12)] hover:-translate-y-1 transition-all duration-700">
               <ClickableImage
                 src={before.src}
                 alt={before.alt}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full p-4 md:p-6 object-contain transition-all duration-700"
                 loading="lazy"
               />
             </div>
@@ -37,11 +37,11 @@ export function ComparisonSection({
             <span className="block text-[10px] font-bold uppercase tracking-[0.3em] text-accent mb-3">
               After
             </span>
-            <div className="aspect-[4/3] rounded-sm border border-accent/30 overflow-hidden relative shadow-sm shadow-accent/5">
+            <div className="aspect-[4/3] bg-[#F5F3F0] rounded-sm border border-accent/30 overflow-hidden relative shadow-sm shadow-accent/5 hover:shadow-[0_8px_32px_-4px_rgba(113,146,192,0.18)] hover:-translate-y-1 transition-all duration-700">
               <ClickableImage
                 src={after.src}
                 alt={after.alt}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full p-4 md:p-6 object-contain transition-all duration-700"
                 loading="lazy"
               />
             </div>

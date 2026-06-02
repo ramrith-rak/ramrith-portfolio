@@ -85,13 +85,15 @@ export default async function ProjectPage({
         </header>
 
         {/* Project Visual */}
-        <div className="aspect-[16/9] rounded-sm border border-border overflow-hidden relative shadow-sm mb-32 md:mb-48">
-          <ClickableImage
-            src={project.image}
-            alt={project.title}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div>
+        {project.image ? (
+          <div className="aspect-[16/9] bg-[#F5F3F0] rounded-sm border border-border overflow-hidden relative shadow-sm hover:shadow-[0_8px_32px_-4px_rgba(113,146,192,0.12)] hover:-translate-y-1 transition-all duration-700 mb-32 md:mb-48">
+            <ClickableImage
+              src={project.image}
+              alt={project.title}
+              className="absolute inset-0 w-full h-full p-8 md:p-12 object-contain transition-all duration-700"
+            />
+          </div>
+        ) : null}
 
         {/* PDF Download (for projects with an asset like Catopia) */}
         {"asset" in project && project.asset && (
