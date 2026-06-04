@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn, asset } from "@/lib/utils";
+import { cn, asset, isActiveRoute } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { NAV_ITEMS } from "@/lib/data";
 
@@ -63,9 +63,9 @@ export function Navbar() {
               onClick={() => setIsOpen(false)}
               className={cn(
                 "text-5xl font-serif font-light transition-all hover:text-accent",
-                pathname === item.path ? "text-foreground italic" : "text-muted"
+                isActiveRoute(pathname, item.path) ? "text-foreground italic" : "text-muted"
               )}
-              aria-current={pathname === item.path ? "page" : undefined}
+              aria-current={isActiveRoute(pathname, item.path) ? "page" : undefined}
             >
               {item.name}
             </Link>
@@ -100,9 +100,9 @@ export function Navbar() {
               href={item.path}
               className={cn(
                 "text-[10px] font-bold uppercase tracking-[0.2em] transition-all hover:text-accent",
-                pathname === item.path ? "text-foreground underline underline-offset-8 decoration-accent/50" : "text-muted"
+                isActiveRoute(pathname, item.path) ? "text-foreground underline underline-offset-8 decoration-accent/50" : "text-muted"
               )}
-              aria-current={pathname === item.path ? "page" : undefined}
+              aria-current={isActiveRoute(pathname, item.path) ? "page" : undefined}
             >
               {item.name}
             </Link>
