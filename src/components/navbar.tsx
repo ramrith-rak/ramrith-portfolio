@@ -77,7 +77,7 @@ export function Navbar() {
             onClick={() => setIsOpen(false)}
             className="text-5xl font-serif font-light transition-all hover:text-accent text-muted"
           >
-            Resume
+            RESUME
           </a>
         </nav>
       </div>
@@ -113,7 +113,7 @@ export function Navbar() {
             rel="noopener noreferrer"
             className="text-[10px] font-bold uppercase tracking-[0.2em] transition-all hover:text-accent text-muted"
           >
-            Resume
+            RESUME
           </a>
         </nav>
 
