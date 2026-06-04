@@ -11,13 +11,13 @@ export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
-  const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   // Manage focus and Escape key when menu opens/closes
   useEffect(() => {
     if (isOpen) {
-      // Focus the first navigation item when menu opens
-      firstLinkRef.current?.focus();
+      // Focus the mobile nav container when menu opens to prevent visual outline on links
+      navRef.current?.focus();
 
       const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === "Escape") {
@@ -54,12 +54,16 @@ export function Navbar() {
         aria-hidden={!isOpen}
         inert={!isOpen}
       >
-        <nav className="relative flex flex-col items-center justify-center h-full gap-12 p-6" aria-label="Mobile Navigation">
-          {NAV_ITEMS.map((item, index) => (
+        <nav 
+          ref={navRef}
+          tabIndex={-1}
+          className="relative flex flex-col items-center justify-center h-full gap-12 p-6 outline-none" 
+          aria-label="Mobile Navigation"
+        >
+          {NAV_ITEMS.map((item) => (
             <Link
               key={item.path}
               href={item.path}
-              ref={index === 0 ? firstLinkRef : undefined}
               onClick={() => setIsOpen(false)}
               className={cn(
                 "text-5xl font-serif font-light transition-all hover:text-accent",
